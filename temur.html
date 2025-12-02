@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+  <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1 {
+            font-size: 90px;
+            color: #0ff;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            animation: glow 2s infinite alternate ease-in-out;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 
+                    0 0 10px #0ff,
+                    0 0 20px #0ff,
+                    0 0 40px #0ff,
+                    0 0 80px cyan;
+            }
+            to {
+                text-shadow: 
+                    0 0 20px #0ff,
+                    0 0 40px cyan,
+                    0 0 60px cyan,
+                    0 0 100px #0ff;
+            }
+        }
+    </style>
+<body>
+		<h1>Kurbanbayef</h1>
+</body>
+</html>
