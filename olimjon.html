@@ -1,12 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>User Sayti</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3f3f3;
+        }
+
+        header {
+            background: #1e1e1e;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .user-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ddd;
+        }
+
+        .user-info h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .user-info p {
+            margin: 5px 0;
+            color: #333;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #1e1e1e;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #444;
+        }
+    </style>
 </head>
 <body>
-    <h1>Olimjon Abduhamidov'🐊</h1>
-    
+
+<header>
+    <h1>User Profili</h1>
+</header>
+
+<div class="container">
+    <div class="user-card">
+        <img src="https://i.pravatar.cc/200" alt="User">
+        <div class="user-info">
+            <h2>Olimjon Abduhamidov</h2>
+            <p>Email: user@example.com</p>
+            <p>Kasb: IT talabasi</p>
+            <a class="btn" href="#">Profilni tahrirlash</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    User Sayti — 2025
+</footer>
+
 </body>
 </html>
