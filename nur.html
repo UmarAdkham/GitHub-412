@@ -1,11 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NURSULTAN</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #05050a;
+        overflow: hidden;
+        font-family: "Poppins", sans-serif;
+    }
+
+    /* ORQA TOMONDAGI HARAKATLANUVCHI YORUQ NUQTALAR (senior effect) */
+    .orb {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(0,255,255,0.6), transparent 70%);
+        border-radius: 50%;
+        animation: move 12s infinite alternate ease-in-out;
+        filter: blur(90px);
+    }
+    .orb:nth-child(1) { top: 10%; left: 20%; }
+    .orb:nth-child(2) { bottom: 10%; right: 20%; animation-delay: 2s; }
+
+    @keyframes move {
+        0% { transform: translate(0,0); }
+        100% { transform: translate(80px, -80px); }
+    }
+
+    /* SENIOR TEXT */
+    .text {
+        font-size: 120px;
+        font-weight: 900;
+        position: relative;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+
+        background: linear-gradient(90deg, #00eaff, #b400ff);
+        -webkit-background-clip: text;
+        color: transparent;
+
+        filter: drop-shadow(0 0 20px #00eaff) drop-shadow(0 0 40px #b400ff);
+
+        animation: shine 4s infinite ease-in-out;
+    }
+
+    /* HOLOGRAM SHINE EFFECT */
+    @keyframes shine {
+        0% {
+            letter-spacing: 8px;
+            filter: drop-shadow(0 0 20px #00eaff);
+        }
+        50% {
+            letter-spacing: 14px;
+            filter: drop-shadow(0 0 40px #b400ff);
+        }
+        100% {
+            letter-spacing: 8px;
+            filter: drop-shadow(0 0 20px #00eaff);
+        }
+    }
+
+    /* GLASS-LAYER BEZAGI (super premium effect) */
+    .glass {
+        position: absolute;
+        width: 90%;
+        height: 200px;
+        top: calc(50% + 120px);
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 30px;
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* REFLECTION – PASTGA YOZILADIGAN AKS */
+    .text::after {
+        content: "NURSULTAN";
+        position: absolute;
+        left: 0;
+        top: 100%;
+        width: 100%;
+        transform: scaleY(-1);
+        opacity: 0.12;
+        background: inherit;
+        -webkit-background-clip: text;
+        color: transparent;
+        filter: blur(4px);
+    }
+</style>
 </head>
+
 <body>
-    <h1>nur</h1>
+    <div class="orb"></div>
+    <div class="orb"></div>
+
+    <div class="text">NURSULTAN</div>
+
+    <!-- <div class="glass"></div> -->
 </body>
 </html>
