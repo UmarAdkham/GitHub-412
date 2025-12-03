@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Tic Tac Toe - Ro‘zimuhammad</title>
+  <title>Tic Tac Toe - Ro‘zimuhammad va Shohnazar</title>
   <style>
     body { font-family: sans-serif; text-align: center; }
     h2 { margin-top: 20px; }
@@ -16,28 +16,48 @@
       display: flex; justify-content: center; align-items: center;
       font-size: 36px; background: #eee; cursor: pointer;
     }
+    #turnText {
+      font-size: 18px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .reset-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .reset-btn:hover {
+      background-color: #45a049;
+    }
   </style>
 </head>
 <body>
 
   <h2>Tic Tac Toe — 1-o‘yinchi: <b>Ro‘zimuhammad (X)</b></h2>
-   <h2>Tic Tac Toe — 1-o‘yinchi: <b>Shohnazar (X)</b></h2>
+  <h2>Tic Tac Toe — 2-o‘yinchi: <b>Shohnazar (O)</b></h2>
   <div id="turnText">Ro‘zimuhammad navbatda (X)</div>
 
   <div class="board" id="board"></div>
 
+  <button class="reset-btn" id="resetButton" style="display:none;">Qayta o‘ynash</button>
+
   <script>
     const board = document.getElementById("board");
     const turnText = document.getElementById("turnText");
+    const resetButton = document.getElementById("resetButton");
 
     let turn = "X"; // Ro‘zimuhammad boshlaydi
     let cells = ["", "", "", "", "", "", "", "", ""];
+    let gameActive = true; // O‘yinning holati (faollik)
 
     // Rasmiy g‘alaba kombinatsiyalari
     const wins = [
-      [0,1,2], [3,4,5], [6,7,8],
-      [0,3,6], [1,4,7], [2,5,8],
-      [0,4,8], [2,4,6]
+      [0, 1, 2], [3, 4, 5], [6, 7, 8],
+      [0, 3, 6], [1, 4, 7], [2, 5, 8],
+      [0, 4, 8], [2, 4, 6]
     ];
 
     // Bo‘sh 9 ta blokni yaratish
@@ -50,27 +70,40 @@
 
     // Har bir yurish
     function move(i, div) {
-      if (cells[i] !== "") return;
+      if (cells[i] !== "" || !gameActive) return; // O‘yin tugagan bo‘lsa yoki katak allaqachon band bo‘lsa
 
       cells[i] = turn;
       div.innerText = turn;
 
       if (checkWin()) {
-        alert((turn === "X" ? "Ro‘zimuhammad" : "O‘yinchi O") + " g‘alaba qozondi!");
-        location.reload();
+        // G‘alaba xabarini chiqarish
+        alert((turn === "X" ? "Ro‘zimuhammad" : "Shohnazar") + " g‘alaba qozondi!");
+        gameActive = false; // O‘yin tugadi
+        resetButton.style.display = "inline-block"; // Qayta o‘ynash tugmasi ko‘rinadi
         return;
       }
 
       turn = turn === "X" ? "O" : "X";
       turnText.innerText =
-        turn === "X" ? "Ro‘zimuhammad navbatda (X)" : "O‘yinchi O navbatda (O)";
+        turn === "X" ? "Ro‘zimuhammad navbatda (X)" : "Shohnazar navbatda (O)";
     }
 
-    // G‘alaba tekshiruv
+    // G‘alaba tekshiruvi
     function checkWin() {
       return wins.some(w => 
         cells[w[0]] && cells[w[0]] === cells[w[1]] && cells[w[1]] === cells[w[2]]
       );
+    }
+
+    // Qayta o‘ynash
+    resetButton.onclick = function() {
+      cells = ["", "", "", "", "", "", "", "", ""];
+      const cellsDivs = document.querySelectorAll('.cell');
+      cellsDivs.forEach(cell => cell.innerText = ""); // Barcha kataklarni tozalash
+      turn = "X"; // Ro‘zimuhammad boshlaydi
+      turnText.innerText = "Ro‘zimuhammad navbatda (X)";
+      gameActive = true; // O‘yin qayta boshlaydi
+      resetButton.style.display = "none"; // Qayta o‘ynash tugmasini yashirish
     }
   </script>
 
